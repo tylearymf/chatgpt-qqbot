@@ -65,6 +65,8 @@ def get_message():
         gid = request.get_json().get('group_id')  # 群号
         uid = request.get_json().get('sender').get('user_id')  # 发言者的qq号
         message = request.get_json().get('raw_message')  # 获取原始信息
+        message_id = request.get_json().get('message_id') # 获取消息id
+
         # 判断当被@时才回答
         if str("[CQ:at,qq=%s]"%qq_no) in message:
             sender = request.get_json().get('sender')
@@ -72,7 +74,7 @@ def get_message():
             print(message)
             # 下面你可以执行更多逻辑，这里只演示与ChatGPT对话
             msg_text = chat(message)  # 将消息转发给ChatGPT处理
-            msg_text = str('[CQ:at,qq=%s]\n'%uid) + str(msg_text)  # @发言人
+            msg_text = str('[CQ:reply,id=%s]'%message_id) + str(msg_text)  # 引用回复
             send_group_message(gid, msg_text)  # 将消息转发到群里
     if request.get_json().get('post_type') == 'request':  # 收到请求消息
         print("收到请求消息")
