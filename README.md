@@ -24,7 +24,7 @@ sudo docker volume create qqbot
 * POST_PORT: 10016 (默认值)
 
 ```
-sudo docker run -it -v qqbot:/app --name=qqbot -e LISTEN_PORT=8700 -e POST_PORT=10016 -e QQ_NUMBER='' -e CHATGPT_TOKEN='' chatgpt-qqbot latest
+sudo docker run -it -v qqbot:/app --name=qqbot -e LISTEN_PORT=8700 -e POST_PORT=10016 -e QQ_NUMBER='' -e CHATGPT_TOKEN='' tylearymf/chatgpt-qqbot latest
 ```
 
 运行后打开QQ扫描二维码登录（需要用目标QQ号扫描），登录成功后，下次会自动登录
