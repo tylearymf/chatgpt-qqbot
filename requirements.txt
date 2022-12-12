@@ -1,4 +1,4 @@
-revChatGPT
+revChatGPT==0.0.38.8
 Flask==2.2.2
 Jinja2==3.1.2
 MarkupSafe==2.1.1
