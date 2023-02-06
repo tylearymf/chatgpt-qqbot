@@ -5,6 +5,8 @@
 
 Github主页: [chatgpt-qqbot](https://github.com/tylearymf/chatgpt-qqbot)
 
+# 2023.2.6可用
+
 ## 创建volume
 
 ```
