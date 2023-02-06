@@ -1,15 +1,15 @@
 import os
 
 qq_number = os.environ.get("QQ_NUMBER", "")
-chatgpt_token = os.environ.get("CHATGPT_TOKEN", "")
+chatgpt_api_key = os.environ.get("CHATGPT_API_KEY", "")
 listen_port = os.environ.get("LISTEN_PORT", "")
 post_port = os.environ.get("POST_PORT", "")
 
 if qq_number == "":
     raise Exception("QQ Number 未设置.")
 
-if chatgpt_token == "":
-    raise Exception("CHATGPT_TOKEN 未设置.")
+if chatgpt_api_key == "":
+    raise Exception("CHATGPT_API_KEY 未设置.")
 
 config_name = "config.yml"
 bot_script_name = "qqbot.py"
@@ -21,7 +21,7 @@ with open(bot_script_name, "r") as f:
     bot_content = f.read()
 
 bot_content = bot_content.replace('qq_no = "0"', 'qq_no = "' + qq_number +'"')
-bot_content = bot_content.replace('"session_token": ""', '"session_token": "' + chatgpt_token + '"')
+bot_content = bot_content.replace('api_key = ""', 'api_key = "' + chatgpt_api_key + '"')
 
 if  listen_port != "":
     config_content = config_content.replace("address: 0.0.0.0:8700", "address: 0.0.0.0:" + listen_port)

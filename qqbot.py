@@ -1,24 +1,23 @@
 import json
 import requests
 from flask import request, Flask
-from revChatGPT.revChatGPT import Chatbot
+from officialGPT import Chatbot
 
 cqhttp_url = "http://localhost:8700" # CQ-http地址
 qq_no = "0" # 机器人QQ号，记得修改
 port = 10016 # ChatGPT端口号
-config = {
-    "session_token": "" # ""里面放刚刚拿到的的token()；例如："session_token": "1234234"
-}
+api_key = ""
+temperature = 0.5
+
 # 创建一个服务，把当前这个python文件当做一个服务
 server = Flask(__name__)
 # 创建ChatGPT实例
-chatbot = Chatbot(config, conversation_id=None)
+chatbot = Chatbot(api_key=api_key)
 
 # 与ChatGPT交互的方法
 def chat(msg):
-    message = chatbot.get_chat_response(msg)['message']
-    # 下面这行代码是获取对话id，如果你需要的话，id就是这么获取的
-    # chatbot.conversation_id
+    response = chatbot.ask(msg, temperature=temperature)
+    message = response['choices'][0]['text']
     print("ChatGPT返回内容: ")
     print(message)
     return message

@@ -5,10 +5,6 @@
 
 Github主页: [chatgpt-qqbot](https://github.com/tylearymf/chatgpt-qqbot)
 
-## 获取ChatGPT的token值
-
-![image-20221211181622660](Screenshots/image-20221211181622660.png)
-
 ## 创建volume
 
 ```
@@ -19,12 +15,12 @@ sudo docker volume create qqbot
 
 * QQ_NUMBER: 目标QQ号
 
-* CHATGPT_TOKEN: 填入上面获取的cookie value
+* CHATGPT_API_KEY: 从这里获取一个key填入即可. https://platform.openai.com/account/api-keys
 * LISTEN_PORT: 8700 (默认值)
 * POST_PORT: 10016 (默认值)
 
 ```
-sudo docker run -it -v qqbot:/app --name=qqbot -e LISTEN_PORT=8700 -e POST_PORT=10016 -e QQ_NUMBER=123456 -e CHATGPT_TOKEN=xxx tylearymf/chatgpt-qqbot latest
+sudo docker run -it -v qqbot:/app --name=qqbot -e LISTEN_PORT=8700 -e POST_PORT=10016 -e QQ_NUMBER=123456 -e CHATGPT_API_KEY=xxx tylearymf/chatgpt-qqbot latest
 ```
 
 运行后打开QQ扫描二维码登录（需要用目标QQ号扫描），登录成功后，下次会自动登录
