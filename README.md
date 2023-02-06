@@ -15,7 +15,7 @@ sudo docker volume create qqbot
 
 * QQ_NUMBER: 目标QQ号
 
-* CHATGPT_API_KEY: 从这里获取一个key填入即可. https://platform.openai.com/account/api-keys
+* CHATGPT_API_KEY: 从这里 [api-keys](https://platform.openai.com/account/api-keys)获取一个key填入即可.
 * LISTEN_PORT: 8700 (默认值)
 * POST_PORT: 10016 (默认值)
 
