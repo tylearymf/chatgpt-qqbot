@@ -15,25 +15,20 @@ sudo docker volume create qqbot
 
 ## 创建容器
 
-* QQ_NUMBER: 目标QQ号
-
-* CHATGPT_API_KEY: 从这里 [api-keys](https://platform.openai.com/account/api-keys)获取一个key填入即可.
-* LISTEN_PORT: 8700 (默认值)
-* POST_PORT: 10016 (默认值)
+* QQ_NUMBER: 目标QQ号（必填）
+* QQ_PASSWORD: QQ密码（可选）
+  * 如果该项不设置时，则使用目标QQ号扫描二维码登录，但是必须保证docker运行网络与扫码手机所在网络是同一个IP段内
+* CHATGPT_API_KEY: 从这里 [api-keys](https://platform.openai.com/account/api-keys)获取一个key填入即可.（必填）
+* LISTEN_PORT: 8700 (可选)
+* POST_PORT: 10016 (可选)
 
 ```
-sudo docker run -it -v qqbot:/app --name=qqbot -e LISTEN_PORT=8700 -e POST_PORT=10016 -e QQ_NUMBER=123456 -e CHATGPT_API_KEY=xxx tylearymf/chatgpt-qqbot latest
-```
+扫码登录版：sudo docker run -it -v qqbot:/app --name=qqbot -e LISTEN_PORT=8700 -e POST_PORT=10016 -e QQ_NUMBER=123456 -e CHATGPT_API_KEY=xxx tylearymf/chatgpt-qqbot latest
 
-运行后打开QQ扫描二维码登录（需要用目标QQ号扫描），登录成功后，下次会自动登录
+QQ密码登录版：sudo docker run -it -v qqbot:/app --name=qqbot -e LISTEN_PORT=8700 -e POST_PORT=10016 -e QQ_NUMBER=123456 -e QQ_PASSWORD=xxx -e CHATGPT_API_KEY=xxx tylearymf/chatgpt-qqbot latest
+```
 
 用其他QQ向目标QQ发送消息即可测试ChatGPT了。
-
-## 二次启动容器
-
-```
-sudo docker start qqbot
-```
 
 ## 引用
 

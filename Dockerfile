@@ -8,6 +8,7 @@ COPY requirements.txt requirements.txt
 RUN pip3 install -r requirements.txt
 
 ENV QQ_NUMBER=
+ENV QQ_PASSWORD=
 ENV CHATGPT_API_KEY=
 ENV LISTEN_PORT=8700
 ENV POST_PORT=10016

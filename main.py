@@ -1,6 +1,7 @@
 import os
 
 qq_number = os.environ.get("QQ_NUMBER", "")
+qq_password = os.environ.get("QQ_PASSWORD", "")
 chatgpt_api_key = os.environ.get("CHATGPT_API_KEY", "")
 listen_port = os.environ.get("LISTEN_PORT", "")
 post_port = os.environ.get("POST_PORT", "")
@@ -30,6 +31,12 @@ if  listen_port != "":
 if  post_port != "":
     config_content = config_content.replace("url: http://127.0.0.1:10016", "url: http://127.0.0.1:" + post_port)
     bot_content = bot_content.replace('port = 10016', 'port = ' + post_port)
+
+if qq_number != "":
+    config_content = config_content.replace("uin: 0", "uin: " + qq_number)
+
+if qq_password != "":
+    config_content = config_content.replace("password: ''", "password: '" + qq_password + "'")
 
 with open(config_name, "w") as f:
     f.write(config_content)
