@@ -14,8 +14,22 @@ server = Flask(__name__)
 # 创建ChatGPT实例
 chatbot = Chatbot(api_key=api_key)
 
+# 命令交互
+def commandChat(msg):
+    if msg == '/reset':
+        chatbot = Chatbot(api_key=api_key)
+        return '会话重置成功'
+
+    return ''
+
 # 与ChatGPT交互的方法
 def chat(msg):
+    result = commandChat(msg)
+    if result != '':
+        print("ChatGPT执行命令: " + msg)
+        print(result)
+        return result
+
     response = chatbot.ask(msg, temperature=temperature)
     message = response['choices'][0]['text']
     print("ChatGPT返回内容: ")
